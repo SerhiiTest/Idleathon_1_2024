@@ -7,7 +7,7 @@ public class Building : MonoBehaviour
 
     private UpgradableBuildingSO data;
 
-    public int PriceToUpgrade => data.Stages[Level + 1]?.UpgradeCost ?? -1;
+    //public int PriceToUpgrade => ;
     
     public void Set(UpgradableBuildingSO data)
     {

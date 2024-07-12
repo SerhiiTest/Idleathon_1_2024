@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TestBuilding
   m_EditorClassIdentifier: 
   <Material>k__BackingField: {fileID: 0}
-  <Stages>k__BackingField: []
   <ResourceToUpgrade>k__BackingField: 0
+  BaseCost: 10
+  <Stages>k__BackingField: []
