@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public GameConfig GameConfig;
+    public GameConfig GameConfig { get; private set; }
     
     private TouristManager _touristManager;
     private WorkerManager _workerManager;
@@ -30,4 +31,6 @@ public class GameManager : MonoBehaviour
         _touristManager = new();
         _workerManager = new();
     }
+
+    public int GetUpgradeCost(int basePrice, int level) => GameConfig.GetNextPrice(basePrice, level);
 }

@@ -11,7 +11,7 @@ public class UpgradableBuildingSO : ScriptableObject
     
     [field: Space()][field: Header("Upgrade Info")]
     [field: SerializeField] public Resource ResourceToUpgrade {get; private set;}
-    [field: SerializeField] public int BaseCost;
+    [field: SerializeField] public int BasePrice;
 
     [field: Space()][field: Header("Upgrade Stages")]
 

@@ -7,8 +7,8 @@ public class Building : MonoBehaviour
 
     private UpgradableBuildingSO data;
 
-    //public int PriceToUpgrade => ;
-    
+    public int PriceToUpgrade => GameManager.Instance.GetUpgradeCost(data.BasePrice, Level + 1);
+
     public void Set(UpgradableBuildingSO data)
     {
         this.data = data;
