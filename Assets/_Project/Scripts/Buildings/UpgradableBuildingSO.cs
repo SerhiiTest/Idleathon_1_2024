@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
@@ -7,8 +8,9 @@ public class UpgradableBuildingSO : ScriptableObject
     [field :Header("Base info")]
 
     // UI Data
-    [field: SerializeField] public Material Material { get; private set; }
-    
+    [field: SerializeField] public List<Material> Materials { get; private set; }
+    [field: SerializeField] public ColliderData Collider { get; private set; }
+
     [field: Space()][field: Header("Upgrade Info")]
     [field: SerializeField] public Resource ResourceToUpgrade {get; private set;}
     [field: SerializeField] public int BasePrice;
@@ -23,4 +25,9 @@ public class UpgradeStage
 {
     public Mesh Mesh;
     //public int UpgradeCost; // use formula from config
+}
+public struct ColliderData
+{
+    public Vector3 Size;
+    public Vector3 Center;
 }
