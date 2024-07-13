@@ -2,9 +2,9 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class BuildingBase : MonoBehaviour
+public abstract class BuildingBase : MonoBehaviour
 {
-    public int Level { get; private set; } = 0;
+    [field: SerializeField] public int Level { get; private set; } = 0;
 
     protected UpgradableBuildingSO _data;
 
@@ -27,11 +27,14 @@ public class BuildingBase : MonoBehaviour
         GetComponent<BoxCollider>().center = data.Collider.Center;
     }
 
-
+#if UNITY_EDITOR
+    [ContextMenu("Upgrade")]
+#endif
     public void Upgrade() 
     {
         Level = math.min(Level + 1, _data.Stages.Length);
-        IsMaxed = Level >= _data.Stages.Length;
+        IsMaxed = Level >= (_data.Stages.Length-1);
+        GetComponent<MeshFilter>().mesh = _data.Stages[Level].Mesh;
         OnUpgrade.Invoke(ID);
     }
 

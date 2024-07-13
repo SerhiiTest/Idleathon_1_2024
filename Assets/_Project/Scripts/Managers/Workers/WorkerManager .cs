@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class WorkerManager
 {
@@ -11,12 +12,19 @@ public class WorkerManager
     private List<int> _needReconstructionIds = new();
     private float _timerToAutoAction = 0;
     public WorkerManagerStats BaseStats { get; private set; }
+    
+    private WallkerVisual[] _visuals;
+    private int _visualSwitcher = 0;
 
-    public WorkerManager(List<Ruin> ruins, List<WorkerBuilding> workerBuildings, WorkerManagerStats stats)
+    public WorkerManager(List<Ruin> ruins, List<WorkerBuilding> workerBuildings, WorkerManagerStats stats, WallkerVisual[] workerVisuals)
     {
-        _pool = new WorkerPool();
-        _pool.SetUp(stats.MaxAmount);
+        GameObject gameObj = new(typeof(WorkerPool).Name);
+        _pool = gameObj.AddComponent<WorkerPool>();
+        _pool.Init(stats.MaxAmount);
+        //_pool.SetUp(stats.MaxAmount);
+        
 
+        _visuals = workerVisuals;
         BaseStats = stats;
         foreach (var ruin in ruins)
         {
@@ -24,10 +32,11 @@ public class WorkerManager
         }
         foreach (var building in workerBuildings)
         {
-            building.OnUpgrade += OnRuinLevelUp;
+            building.OnUpgrade += OnBuildingLevelUp;
         }
 
         _ruins = ruins;
+
         _workerBuildings = workerBuildings;
     }
 
@@ -39,7 +48,7 @@ public class WorkerManager
             _needReconstructionIds.Remove(id);
             // Send Finished Event
         }
-        // Upgrade Comfort
+        Debug.Log("TODO Add more comfort");
     }
     private void OnBuildingLevelUp(int id)
     {
@@ -48,14 +57,15 @@ public class WorkerManager
         {
             // Send Finished Event
         }
-        BaseStats = GameManager.UpgradeWorkerStats(BaseStats, b.Stats);
+        BaseStats = GameManager.Instance.UpgradeWorkerStats(BaseStats, b.Stats,b.Level);
+        _pool.SetUp(BaseStats.MaxAmount);
     }
 
     public void Update(float delta)
     {
         if(true /*Replace with settings of autoconstruct*/ && _needReconstructionIds.Count == 0)
         {
-            if(_timerToAutoAction >= GameManager.Instance.GameConfig.TimeToAutoAction)
+            if(_timerToAutoAction >= GameManager.Instance.Config.TimeToAutoAction)
             {
                 _timerToAutoAction = 0;
                 int tempID = -1;
@@ -80,15 +90,16 @@ public class WorkerManager
             {
                 _timerToAutoAction += delta;
             }
-
-            if(_pool.HasFreeWorkers && GameManager.Instance.Sand > 0 && _needReconstructionIds.Count > 0)
-            {
-                _pool.Get(_ruins[_needReconstructionIds[0]].Path, BaseStats.Speed, GameManager.Instance.TryGet(Resource.Sand, BaseStats.CarryWeight));
-                // Add to list & subscribe for event
-            }
         }
 
-        // Update Workers
+        if (_pool.HasFreeWorkers && GameManager.Instance.Sand > 0 && _needReconstructionIds.Count > 0)
+        {
+            _pool.Get(_visuals[_visualSwitcher], _ruins[_needReconstructionIds[0]], BaseStats.Speed, GameManager.Instance.TryGet(Resource.Sand, BaseStats.CarryWeight));
+            // Add to list & subscribe for event
+            _visualSwitcher = (_visualSwitcher + 1) % _visuals.Length;
+        }
+
+        _pool.UpdateAllActive(delta);
     }
 
 }
@@ -98,4 +109,9 @@ public struct WorkerManagerStats
     public int Speed;
     public int CarryWeight;
     public int MaxAmount;
+
+    public static WorkerManagerStats operator +(WorkerManagerStats a, WorkerManagerStats b)
+    {
+        return new WorkerManagerStats() { CarryWeight = a.CarryWeight + b.CarryWeight, MaxAmount = a.MaxAmount + b.MaxAmount, Speed = a.Speed + b.Speed };
+    }
 }

@@ -8,24 +8,24 @@ public interface IPool<T>
     public void ReleaseEntity(T obj);
 }
 
-public abstract class PoolBase<T> : MonoBehaviour, IPool<T> where T : Component, IReleasable
+public abstract class PoolBase<T> : MonoBehaviour, IPool<T> where T : Component
 {
-    protected ObjectPool<T> m_pool;
+    protected ObjectPool<T> _pool;
     protected virtual bool CollectionCheck { get; } = true;
     protected virtual int DefaultCapacity { get; set; } = 5;
     protected virtual int MaxSize { get; } = 100;
 
     public virtual T Get()
     {
-        return m_pool.Get();
+        return _pool.Get();
     }
     public void ReleaseEntity(T obj)
     {
-        m_pool.Release(obj);
+        _pool.Release(obj);
     }
     protected void SetupInstance()
     {
-        m_pool = new ObjectPool<T>(CreateEntity, OnEntityGet, OnEntityRelease, OnEntityDestroy, CollectionCheck, DefaultCapacity, MaxSize);
+        _pool = new ObjectPool<T>(CreateEntity, OnEntityGet, OnEntityRelease, OnEntityDestroy, CollectionCheck, DefaultCapacity, MaxSize);
     }
     protected abstract T CreateEntity();
 

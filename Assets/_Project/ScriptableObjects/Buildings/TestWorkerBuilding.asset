@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b564ead7f7bb104397a33c076fb6a8b, type: 3}
-  m_Name: TestBuilding
+  m_Name: TestWorkerBuilding
   m_EditorClassIdentifier: 
-  <Material>k__BackingField: {fileID: 0}
+  <Materials>k__BackingField:
+  - {fileID: 2100000, guid: c9df1f9d3cac599428481f38462a5f62, type: 2}
   <ResourceToUpgrade>k__BackingField: 0
-  BaseCost: 10
-  <Stages>k__BackingField: []
+  BasePrice: 10
+  <Stages>k__BackingField:
+  - Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}

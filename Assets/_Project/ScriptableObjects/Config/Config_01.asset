@@ -14,24 +14,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <A>k__BackingField: 0.01
   <B>k__BackingField: 0.02
-  <BuildingBasePrefab>k__BackingField: {fileID: 0}
+  <BuildingBasePrefab>k__BackingField: {fileID: 6331478012559983081, guid: cb2463fa414ae0f42a4043a368892291,
+    type: 3}
+  <WallkerPrefab>k__BackingField: {fileID: 3800809967280336833, guid: da791ef950b75934eaba3be260284daf,
+    type: 3}
   <workerManagerStats>k__BackingField:
-    Speed: 0
-    CarryWeight: 0
-    MaxAmount: 0
-  <RuinsBuildings>k__BackingField: []
-  <WorkerBuildings>k__BackingField: []
-  <TimeToAutoAction>k__BackingField: 0
-  <touristManagerStats>k__BackingField:
-    Speed: 0
-    CarryWeight: 0
-    MaxAmount: 0
-    Comfort: 0
-  <CityBuildings>k__BackingField:
-  - Item1: {fileID: 0}
+    Speed: 1
+    CarryWeight: 1
+    MaxAmount: 1
+  <RuinsBuildings>k__BackingField:
+  - Position: {x: 2, y: 0, z: 0}
+    Item1: {fileID: 11400000, guid: beea756c1213898469fdd312c9181152, type: 2}
     Item2:
-      Speed: 0
-      CarryWeight: 0
-      MaxAmount: 0
-      Comfort: 0
-  <TouristPaths>k__BackingField: []
+      Points:
+      - {x: 2, y: 0, z: -4}
+      - {x: 1.5, y: 0, z: -2.5}
+      - {x: 2, y: 0, z: -1}
+  <WorkerBuildings>k__BackingField:
+  - Position: {x: 0, y: 0, z: 0}
+    Item1: {fileID: 11400000, guid: fad949ba69c10614f8107fbb1109f689, type: 2}
+    Item2:
+      Speed: 1
+      CarryWeight: 1
+      MaxAmount: 1
+  <TimeToAutoAction>k__BackingField: 5
+  <WorkerVisuals>k__BackingField:
+  - Materials:
+    - {fileID: 2100000, guid: 421858e9e3bcaff4a80c207227c28270, type: 2}
+    Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - Materials:
+    - {fileID: 2100000, guid: 9a9fec834bc927f4382dfc5f7e6ca208, type: 2}
+    Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  <touristManagerStats>k__BackingField:
+    Speed: 1
+    CarryWeight: 1
+    MaxAmount: 1
+    Comfort: 1
+  <CityBuildings>k__BackingField:
+  - Position: {x: -2, y: 0, z: 0}
+    Item1: {fileID: 11400000, guid: ab13f47f87c76a14aa8830eb14dcbe53, type: 2}
+    Item2:
+      Speed: 1
+      CarryWeight: 1
+      MaxAmount: 1
+      Comfort: 1
+  <TouristPaths>k__BackingField:
+  - Points:
+    - {x: 0, y: 0, z: -4}
+    - {x: 1, y: 0, z: -2.5}
+    - {x: 0, y: 0, z: -1}
+  - Points:
+    - {x: 0, y: 0, z: -4}
+    - {x: -1, y: 0, z: -2.5}
+    - {x: 0, y: 0, z: -1}
+  <TouristVisuals>k__BackingField:
+  - Materials:
+    - {fileID: 2100000, guid: 421858e9e3bcaff4a80c207227c28270, type: 2}
+    Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - Materials:
+    - {fileID: 2100000, guid: 9a9fec834bc927f4382dfc5f7e6ca208, type: 2}
+    Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
