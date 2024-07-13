@@ -14,3 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <A>k__BackingField: 0.01
   <B>k__BackingField: 0.02
+  <BuildingBasePrefab>k__BackingField: {fileID: 0}
+  <workerManagerStats>k__BackingField:
+    Speed: 0
+    CarryWeight: 0
+    MaxAmount: 0
+  <RuinsBuildings>k__BackingField: []
+  <WorkerBuildings>k__BackingField: []
+  <TimeToAutoAction>k__BackingField: 0
+  <touristManagerStats>k__BackingField:
+    Speed: 0
+    CarryWeight: 0
+    MaxAmount: 0
+    Comfort: 0
+  <CityBuildings>k__BackingField:
+  - Item1: {fileID: 0}
+    Item2:
+      Speed: 0
+      CarryWeight: 0
+      MaxAmount: 0
+      Comfort: 0
+  <TouristPaths>k__BackingField: []

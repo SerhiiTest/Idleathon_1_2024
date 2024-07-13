@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ public class TouristManager
         {
             _timer = 0;
 
-            int r = Random.Range(0, 10);
+            int r = UnityEngine.Random.Range(0, 10);
             if (r > 6) {
                 _pool.Get(_paths[_pathSwitcher], BaseStats.Speed, Resource.Sand, BaseStats.CarryWeight + r-8);
                 // Add to list & subscribe for event
@@ -65,6 +66,7 @@ public class TouristManager
     }
 
 }
+[Serializable]
 public struct TouristManagerStats
 {
     public int Speed;

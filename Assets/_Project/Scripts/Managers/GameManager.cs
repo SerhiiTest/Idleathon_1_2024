@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -112,7 +111,6 @@ public class GameManager : MonoBehaviour
     public static TouristManagerStats UpgradeCityStats(TouristManagerStats baseStats, TouristManagerStats stats)
     {
         // Formula from GameConfig
-
         throw new NotImplementedException();
     }
 
@@ -125,7 +123,8 @@ public class GameManager : MonoBehaviour
 }
 
 // placeholder
+[Serializable]
 public class Path
 {
-
+    public LineRenderer Line;
 }

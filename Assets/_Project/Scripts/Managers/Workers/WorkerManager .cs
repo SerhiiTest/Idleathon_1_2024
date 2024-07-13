@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class WorkerManager
@@ -91,7 +92,7 @@ public class WorkerManager
     }
 
 }
-
+[Serializable]
 public struct WorkerManagerStats
 {
     public int Speed;
