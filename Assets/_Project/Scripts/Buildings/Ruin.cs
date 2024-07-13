@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Ruin : Building
 {
-    private Path _path;
+    public Path Path { get; private set; }
 
     public void Set(int id, UpgradableBuildingSO data, Path path)
     {
         Set(id, data);
-        _path = path;
+        Path = path;
     }
 }

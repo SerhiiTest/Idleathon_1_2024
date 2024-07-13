@@ -11,8 +11,15 @@ public class GameConfig : ScriptableObject
         return (int)Mathf.Round(A * Mathf.Pow(level, 3) * basePrice / 3 + B * Mathf.Pow(level, 2) * basePrice/2 + level * basePrice);
     }
 
+    [field:SerializeField] public WorkerManagerStats workerManagerStats { get; private set; }
     [field: SerializeField] public (UpgradableBuildingSO, Path)[] RuinsBuildings { get; private set; }
+
+    [field: SerializeField] public float TimeToAutoAction { get; private set; }
+
+
+    [field: SerializeField] public TouristManagerStats touristManagerStats { get; private set; }
     [field: SerializeField] public UpgradableBuildingSO[] CityBuildings { get; private set; }
     
     [field: SerializeField] public Transform BuildingBasePrefab { get; private set; }
+    [field: SerializeField] public Path[] TouristPaths { get; private set; }
 }

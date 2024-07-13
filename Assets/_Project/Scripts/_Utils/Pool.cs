@@ -12,13 +12,9 @@ public abstract class PoolBase<T> : MonoBehaviour, IPool<T> where T : Component,
 {
     protected ObjectPool<T> m_pool;
     protected virtual bool CollectionCheck { get; } = true;
-    protected virtual int DefaultCapacity { get; } = 5;
+    protected virtual int DefaultCapacity { get; set; } = 5;
     protected virtual int MaxSize { get; } = 100;
 
-    protected virtual void Awake()
-    {
-        SetupInstance();
-    }
     public virtual T Get()
     {
         return m_pool.Get();
@@ -27,7 +23,7 @@ public abstract class PoolBase<T> : MonoBehaviour, IPool<T> where T : Component,
     {
         m_pool.Release(obj);
     }
-    private void SetupInstance()
+    protected void SetupInstance()
     {
         m_pool = new ObjectPool<T>(CreateEntity, OnEntityGet, OnEntityRelease, OnEntityDestroy, CollectionCheck, DefaultCapacity, MaxSize);
     }

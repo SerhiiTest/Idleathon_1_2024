@@ -13,10 +13,40 @@ public class GameManager : MonoBehaviour
     private TouristManager _touristManager;
     private WorkerManager _workerManager;
 
-    public Resource Money;
-    public Resource Sand;
+    public int Money;
+    public int Sand;
 
-
+    public int TryGet(Resource type, int amount)
+    {
+        if(type == Resource.Sand)
+        {
+            if(Sand > amount)
+            {
+                Sand -= amount;
+                return amount;
+            }
+            else
+            {
+                amount = Sand;
+                Sand = 0;
+                return amount;
+            }
+        }
+        else
+        {
+            if (Money > amount)
+            {
+                Money -= amount;
+                return amount;
+            }
+            else
+            {
+                amount = Money;
+                Money = 0;
+                return amount;
+            }
+        }
+    }
 
     #region Awake & OnDestroy
     void Awake()
@@ -58,8 +88,14 @@ public class GameManager : MonoBehaviour
             cityBuildings.Add(ruine);
         }
 
-        _touristManager = new(cityBuildings);
-        _workerManager = new(ruins);
+        _touristManager = new(cityBuildings, GameConfig.touristManagerStats, GameConfig.TouristPaths);
+        _workerManager = new(ruins, GameConfig.workerManagerStats);
+    }
+
+    private void FixedUpdate()
+    {
+        _touristManager.Update(Time.fixedDeltaTime);
+        _workerManager.Update(Time.fixedDeltaTime);
     }
 
     public int GetUpgradeCost(int basePrice, int level) => GameConfig.GetNextPrice(basePrice, level);

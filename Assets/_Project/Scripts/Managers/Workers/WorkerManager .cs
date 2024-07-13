@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class WorkerManager
 {
@@ -9,12 +6,15 @@ public class WorkerManager
 
     private List<Ruin> _ruins;
     private List<int> _needReconstructionIds = new();
-
+    private float _timerToAutoAction = 0;
     public WorkerManagerStats BaseStats { get; private set; }
 
-    public WorkerManager(List<Ruin> ruins)
+    public WorkerManager(List<Ruin> ruins, WorkerManagerStats stats)
     {
         _pool = new WorkerPool();
+        _pool.SetUp(stats.MaxAmount);
+
+        BaseStats = stats;
         foreach (var ruin in ruins)
         {
             ruin.OnUpgrade += OnBuildingLevelUp;
@@ -27,12 +27,52 @@ public class WorkerManager
         Ruin r = _ruins[id];
         if (r.IsMaxed)
         {
-            _ruins.RemoveAt(id);
             _needReconstructionIds.Remove(id);
             // Send Finished Event
         }
         // UpgradeStats
     }
+
+    public void Update(float delta)
+    {
+        if(true /*Replace with settings of autoconstruct*/ && _needReconstructionIds.Count == 0)
+        {
+            if(_timerToAutoAction >= GameManager.Instance.GameConfig.TimeToAutoAction)
+            {
+                _timerToAutoAction = 0;
+                int tempID = -1;
+                int tempMinimumCost = int.MaxValue;
+                
+                for(int i=0; i < _ruins.Count; i++)
+                {
+                    if (_ruins[i].IsMaxed)
+                        continue;
+                    if (_ruins[i].PriceToUpgrade < tempMinimumCost)
+                    {
+                        tempMinimumCost = _ruins[i].PriceToUpgrade;
+                        tempID = i;
+                    }
+                }
+                if (tempID != -1)
+                {
+                    _needReconstructionIds.Add(tempID);
+                }
+            }
+            else
+            {
+                _timerToAutoAction += delta;
+            }
+
+            if(_pool.HasFreeWorkers && GameManager.Instance.Sand > 0 && _needReconstructionIds.Count > 0)
+            {
+                _pool.Get(_ruins[_needReconstructionIds[0]].Path, BaseStats.Speed, GameManager.Instance.TryGet(Resource.Sand, BaseStats.CarryWeight));
+                // Add to list & subscribe for event
+            }
+        }
+
+        // Update Workers
+    }
+
 }
 
 public struct WorkerManagerStats

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +7,18 @@ public class TouristManager
 
     private List<Building> _cityBuildings;
 
+    private Path[] _paths;
+    private int _pathSwitcher = 0;
+
     public TouristManagerStats BaseStats { get; private set; }
 
-    public TouristManager(List<Building> cityBuildings)
+    public TouristManager(List<Building> cityBuildings, TouristManagerStats stats, Path[] paths)
     {
-        _pool = new();
+        _pool = new ();
+        _pool.SetUp(stats.MaxAmount);
+
+        _paths = paths;
+
         foreach (var b in cityBuildings)
         {
             b.OnUpgrade += OnBuildingLevelUp;
@@ -30,6 +36,33 @@ public class TouristManager
         }
         // UpgradeStats
     }
+    private float _timer;
+    public void Update(float delta) {
+        
+        if(_pool.HasFreeTourists && _timer < 7 /*Replace with formula based on BaseSpeed & BaseSpeed level*/)
+        {
+            _timer = 0;
+
+            int r = Random.Range(0, 10);
+            if (r > 6) {
+                _pool.Get(_paths[_pathSwitcher], BaseStats.Speed, Resource.Sand, BaseStats.CarryWeight + r-8);
+                // Add to list & subscribe for event
+            }
+            else
+            {
+                _pool.Get(_paths[_pathSwitcher], BaseStats.Speed, Resource.Money, BaseStats.Comfort /*REPLACE WITH FORMULA*/);
+                // Add to list & subscribe for event
+            }
+        }
+        else
+        {
+            _timer += delta;
+        }
+
+
+        // Update Tourists
+    }
+
 }
 public struct TouristManagerStats
 {
