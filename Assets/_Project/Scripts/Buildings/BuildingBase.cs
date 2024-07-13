@@ -2,7 +2,7 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public class BuildingBase : MonoBehaviour
 {
     public int Level { get; private set; } = 0;
 

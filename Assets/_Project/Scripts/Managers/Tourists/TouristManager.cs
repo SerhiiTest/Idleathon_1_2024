@@ -5,14 +5,14 @@ public class TouristManager
 {
     private TouristPool _pool;
 
-    private List<Building> _cityBuildings;
+    private List<CityBuilding> _cityBuildings;
 
     private Path[] _paths;
     private int _pathSwitcher = 0;
 
     public TouristManagerStats BaseStats { get; private set; }
 
-    public TouristManager(List<Building> cityBuildings, TouristManagerStats stats, Path[] paths)
+    public TouristManager(List<CityBuilding> cityBuildings, TouristManagerStats stats, Path[] paths)
     {
         _pool = new ();
         _pool.SetUp(stats.MaxAmount);
@@ -28,13 +28,14 @@ public class TouristManager
 
     private void OnBuildingLevelUp(int id)
     {
-        Building r = _cityBuildings[id];
+        CityBuilding r = _cityBuildings[id];
         if (r.IsMaxed)
         {
             _cityBuildings.RemoveAt(id);
             // Send Finished Event
         }
-        // UpgradeStats
+
+        BaseStats = GameManager.UpgradeCityStats(BaseStats, r.Stats);
     }
     private float _timer;
     public void Update(float delta) {

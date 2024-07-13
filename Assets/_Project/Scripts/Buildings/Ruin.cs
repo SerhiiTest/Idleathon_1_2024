@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
-
-public class Ruin : Building
+public class Ruin : BuildingBase
 {
     public Path Path { get; private set; }
 

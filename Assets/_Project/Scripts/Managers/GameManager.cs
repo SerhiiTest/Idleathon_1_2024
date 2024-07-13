@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
         Sand = 0;
         Money = 0;
 
-        List<Building> cityBuildings = new();
+        List<CityBuilding> cityBuildings = new();
+        List<WorkerBuilding> workerBuildings = new();
         List<Ruin> ruins = new();
         int temp = 0;
         foreach (var r in GameConfig.RuinsBuildings)
@@ -82,14 +83,22 @@ public class GameManager : MonoBehaviour
         temp = 0;
         foreach(var c in GameConfig.CityBuildings)
         {
-            Building ruine = Instantiate(GameConfig.BuildingBasePrefab, transform, true).AddComponent<Building>();
-            ruine.Set(temp,c);
+            CityBuilding ruine = Instantiate(GameConfig.BuildingBasePrefab, transform, true).AddComponent<CityBuilding>();
+            ruine.Set(temp, c.Item1, c.Item2);
             temp++;
             cityBuildings.Add(ruine);
         }
+        temp = 0;
+        foreach (var c in GameConfig.WorkerBuildings)
+        {
+            WorkerBuilding ruine = Instantiate(GameConfig.BuildingBasePrefab, transform, true).AddComponent<WorkerBuilding>();
+            ruine.Set(temp, c.Item1, c.Item2);
+            temp++;
+            workerBuildings.Add(ruine);
+        }
 
         _touristManager = new(cityBuildings, GameConfig.touristManagerStats, GameConfig.TouristPaths);
-        _workerManager = new(ruins, GameConfig.workerManagerStats);
+        _workerManager = new(ruins, workerBuildings, GameConfig.workerManagerStats);
     }
 
     private void FixedUpdate()
@@ -99,6 +108,20 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetUpgradeCost(int basePrice, int level) => GameConfig.GetNextPrice(basePrice, level);
+
+    public static TouristManagerStats UpgradeCityStats(TouristManagerStats baseStats, TouristManagerStats stats)
+    {
+        // Formula from GameConfig
+
+        throw new NotImplementedException();
+    }
+
+    public static WorkerManagerStats UpgradeWorkerStats(WorkerManagerStats baseStats, WorkerManagerStats stats)
+    {
+        // Formula from GameConfig
+
+        throw new NotImplementedException();
+    }
 }
 
 // placeholder

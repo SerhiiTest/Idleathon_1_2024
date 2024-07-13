@@ -4,12 +4,14 @@ public class WorkerManager
 {
     private WorkerPool _pool;
 
+    private List<WorkerBuilding> _workerBuildings;
+
     private List<Ruin> _ruins;
     private List<int> _needReconstructionIds = new();
     private float _timerToAutoAction = 0;
     public WorkerManagerStats BaseStats { get; private set; }
 
-    public WorkerManager(List<Ruin> ruins, WorkerManagerStats stats)
+    public WorkerManager(List<Ruin> ruins, List<WorkerBuilding> workerBuildings, WorkerManagerStats stats)
     {
         _pool = new WorkerPool();
         _pool.SetUp(stats.MaxAmount);
@@ -17,12 +19,18 @@ public class WorkerManager
         BaseStats = stats;
         foreach (var ruin in ruins)
         {
-            ruin.OnUpgrade += OnBuildingLevelUp;
+            ruin.OnUpgrade += OnRuinLevelUp;
         }
+        foreach (var building in workerBuildings)
+        {
+            building.OnUpgrade += OnRuinLevelUp;
+        }
+
         _ruins = ruins;
+        _workerBuildings = workerBuildings;
     }
 
-    private void OnBuildingLevelUp(int id)
+    private void OnRuinLevelUp(int id)
     {
         Ruin r = _ruins[id];
         if (r.IsMaxed)
@@ -30,7 +38,16 @@ public class WorkerManager
             _needReconstructionIds.Remove(id);
             // Send Finished Event
         }
-        // UpgradeStats
+        // Upgrade Comfort
+    }
+    private void OnBuildingLevelUp(int id)
+    {
+        WorkerBuilding b = _workerBuildings[id];
+        if (b.IsMaxed)
+        {
+            // Send Finished Event
+        }
+        BaseStats = GameManager.UpgradeWorkerStats(BaseStats, b.Stats);
     }
 
     public void Update(float delta)
