@@ -17,6 +17,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b6f745c724a91b04b9717b34f1f825c4, type: 2}
   - {fileID: 2100000, guid: 01feeb8f190556449bc06af786b32c97, type: 2}
   - {fileID: 2100000, guid: 40b1a27321dfbc64fac41ba13ebb31d2, type: 2}
+  <Collider>k__BackingField:
+    Size: {x: 0.5, y: 0.5, z: 0.5}
+    Center: {x: 0, y: 0, z: 0}
+  <BName>k__BackingField: House
+  <Description>k__BackingField: 
   <ResourceToUpgrade>k__BackingField: 0
   BasePrice: 6
   <Stages>k__BackingField:

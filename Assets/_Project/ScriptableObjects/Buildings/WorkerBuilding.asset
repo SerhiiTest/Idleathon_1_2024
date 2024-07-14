@@ -15,10 +15,15 @@ MonoBehaviour:
   <Materials>k__BackingField:
   - {fileID: 2100000, guid: c9df1f9d3cac599428481f38462a5f62, type: 2}
   <Collider>k__BackingField:
-    Size: {x: 1, y: 1, z: 1}
+    Size: {x: 0.5, y: 0.5, z: 0.5}
     Center: {x: 0, y: 0, z: 0}
+  <BName>k__BackingField: Tent
+  <Description>k__BackingField: Upgrades workers
   <ResourceToUpgrade>k__BackingField: 0
-  BasePrice: 10
+  BasePrice: 12
   <Stages>k__BackingField:
-  - Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  - Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - Mesh: {fileID: -5495902117074765545, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}
+  - Mesh: {fileID: -5495902117074765545, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}
+  - Mesh: {fileID: -5495902117074765545, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}
+  - Mesh: {fileID: -5495902117074765545, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}
+  - Mesh: {fileID: -5495902117074765545, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}

@@ -82,7 +82,7 @@ Label {
     padding-left: 10px;
     justify-content: space-around;
     min-width: 192px;
-    background-color: rgba(75, 75, 75, 0.38);
+    background-color: rgba(75, 75, 75, 0.99);
     margin-top: 15px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;

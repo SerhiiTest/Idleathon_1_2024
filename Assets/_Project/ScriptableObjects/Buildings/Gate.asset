@@ -15,8 +15,10 @@ MonoBehaviour:
   <Materials>k__BackingField:
   - {fileID: 2100000, guid: 318e4d9295f8eb649b70d52b06f42915, type: 2}
   <Collider>k__BackingField:
-    Size: {x: 1, y: 1, z: 1}
+    Size: {x: 0.5, y: 0.5, z: 0.5}
     Center: {x: 0, y: 0, z: 0}
+  <BName>k__BackingField: Gate
+  <Description>k__BackingField: 
   <ResourceToUpgrade>k__BackingField: 1
   BasePrice: 15
   <Stages>k__BackingField:

@@ -16,6 +16,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 741ee5acefdcbe8458e9fa595661f160, type: 2}
   - {fileID: 2100000, guid: 13b07ee2cdff2954a8ab3a83cbff9c95, type: 2}
   - {fileID: 2100000, guid: 44f8970ffec9a9e4b9e6943c883e4520, type: 2}
+  <Collider>k__BackingField:
+    Size: {x: 0.5, y: 0.5, z: 0.5}
+    Center: {x: 0, y: 0, z: 0}
+  <BName>k__BackingField: 
+  <Description>k__BackingField: 
   <ResourceToUpgrade>k__BackingField: 0
   BasePrice: 5
   <Stages>k__BackingField:
