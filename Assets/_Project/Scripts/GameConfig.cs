@@ -62,6 +62,7 @@ public struct WallkerVisual
 [Serializable]
 public struct RuinsBuildingsStruct
 {
+    public Vector3 Rotation;
     public Vector3 Position;
     public UpgradableBuildingSO Item1;
     public Path Item2;
@@ -70,6 +71,7 @@ public struct RuinsBuildingsStruct
 [Serializable]
 public struct WorkersBuildingsStruct
 {
+    public Vector3 Rotation;
     public Vector3 Position;
     public UpgradableBuildingSO Item1;
     public WorkerManagerStats Item2;
@@ -78,6 +80,7 @@ public struct WorkersBuildingsStruct
 [Serializable]
 public struct CityBuildingsStruct
 {
+    public Vector3 Rotation;
     public Vector3 Position;
     public UpgradableBuildingSO Item1;
     public TouristManagerStats Item2;

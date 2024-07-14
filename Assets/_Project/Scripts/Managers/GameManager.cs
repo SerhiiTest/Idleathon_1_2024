@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
         {
             Ruin ruine = Instantiate(Config.BuildingBasePrefab, transform, true).AddComponent<Ruin>();
             ruine.transform.position = r.Position;
+            ruine.transform.localRotation = Quaternion.Euler(r.Rotation);
+
             ruine.Set(temp, r.Item1,r.Item2);
             temp++;
             ruins.Add(ruine);
@@ -96,8 +98,9 @@ public class GameManager : MonoBehaviour
         temp = 0;
         foreach(var c in Config.CityBuildings)
         {
-            CityBuilding building = Instantiate(Config.BuildingBasePrefab, transform, true).AddComponent<CityBuilding>();
-            building.transform.position = c.Position;
+            CityBuilding building = Instantiate(Config.BuildingBasePrefab, transform).AddComponent<CityBuilding>();
+            building.transform.localPosition = c.Position;
+            building.transform.localRotation = Quaternion.Euler(c.Rotation);
             building.Set(temp, c.Item1, c.Item2);
             temp++;
             cityBuildings.Add(building);
@@ -107,6 +110,7 @@ public class GameManager : MonoBehaviour
         {
             WorkerBuilding building = Instantiate(Config.BuildingBasePrefab, transform, true).AddComponent<WorkerBuilding>();
             building.transform.position = c.Position;
+            building.transform.localRotation = Quaternion.Euler(c.Rotation);
             building.Set(temp, c.Item1, c.Item2);
             temp++;
             workerBuildings.Add(building);
