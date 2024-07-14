@@ -23,15 +23,18 @@ MonoBehaviour:
     CarryWeight: 1
     MaxAmount: 1
   <RuinsBuildings>k__BackingField:
-  - Position: {x: 2, y: 0, z: 0}
+  - Rotation: {x: 0, y: 0, z: 0}
+    Position: {x: 2, y: 0, z: 0}
     Item1: {fileID: 11400000, guid: beea756c1213898469fdd312c9181152, type: 2}
     Item2:
       Points:
       - {x: 2, y: 0, z: -4}
       - {x: 1.5, y: 0, z: -2.5}
       - {x: 2, y: 0, z: -1}
+      - {x: 2, y: 0, z: -1}
   <WorkerBuildings>k__BackingField:
-  - Position: {x: 0, y: 0, z: 0}
+  - Rotation: {x: 0, y: 0, z: 0}
+    Position: {x: 0, y: 0, z: 0}
     Item1: {fileID: 11400000, guid: fad949ba69c10614f8107fbb1109f689, type: 2}
     Item2:
       Speed: 1
@@ -51,7 +54,8 @@ MonoBehaviour:
     MaxAmount: 1
     Comfort: 1
   <CityBuildings>k__BackingField:
-  - Position: {x: -2, y: 0, z: 0}
+  - Rotation: {x: 0, y: 0, z: 0}
+    Position: {x: -2, y: 0, z: 0}
     Item1: {fileID: 11400000, guid: ab13f47f87c76a14aa8830eb14dcbe53, type: 2}
     Item2:
       Speed: 1

@@ -1,12 +1,16 @@
 using System;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class BuildingBase : MonoBehaviour
 {
     [field: SerializeField] public int Level { get; private set; } = 0;
 
-    protected UpgradableBuildingSO _data;
+    public UpgradableBuildingSO _data;
+
+    public string Description => _data.Description;
+    public string BName => _data.BName;
 
     public event Action<int> OnUpgrade;
 

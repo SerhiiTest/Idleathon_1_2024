@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Materials>k__BackingField:
   - {fileID: 2100000, guid: 318e4d9295f8eb649b70d52b06f42915, type: 2}
+  <Collider>k__BackingField:
+    Size: {x: 1, y: 1, z: 1}
+    Center: {x: 0, y: 0, z: 0}
   <ResourceToUpgrade>k__BackingField: 1
   BasePrice: 15
   <Stages>k__BackingField:
-  - Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  - Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  - Mesh: {fileID: 5314001602804927246, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}
+  - Mesh: {fileID: -6783781918639325275, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}
+  - Mesh: {fileID: 7905931019506591743, guid: 2960f0742be7ae749b53f934beadc21c, type: 3}

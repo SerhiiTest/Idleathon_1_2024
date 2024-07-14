@@ -1,0 +1,54 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/style.uss?fileID=7433441132597879392&amp;guid=e3f5da2c3dc2a7b4cb38cfc0b8ddbb13&amp;type=3#style" />
+    <ui:VisualElement style="position: absolute; top: 0; bottom: 0; left: 0; right: 60%; align-items: center; justify-content: center; align-self: center;">
+        <BuildingInfo name="Info" style="display: flex; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; background-color: rgb(106, 106, 106); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; min-width: 334px; min-height: 314px; justify-content: space-around;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="position: absolute; top: 2%; bottom: 50%; left: 75%; right: 1%; align-items: flex-end; justify-content: flex-start; align-self: center;">
+        <ui:VisualElement class="statsBlock" style="flex-grow: 0; flex-shrink: 0;">
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0; -unity-text-align: upper-left; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Money" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Money" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Sand" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Sand" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="VisualElement" style="position: absolute; top: 50%; bottom: 2%; left: 75%; right: 1%; align-items: flex-end; justify-content: flex-end; align-self: center;">
+        <ui:VisualElement class="statsBlock" style="flex-grow: 0; flex-direction: column; flex-shrink: 0;">
+            <ui:Label tabindex="-1" text="Workers" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 25px; align-self: stretch;" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Speed" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WS" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Carry Weight" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="height: 33px;" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WCW" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Max Quantity" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WMQ" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="statsBlock" style="flex-grow: 0; flex-direction: column; flex-shrink: 0; align-self: flex-end;">
+            <ui:Label tabindex="-1" text="Tourists" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 25px;" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Speed" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TS" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Carry Weight" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="height: 33px;" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TCW" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Max Quantity" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TMQ" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Comfort" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TC" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

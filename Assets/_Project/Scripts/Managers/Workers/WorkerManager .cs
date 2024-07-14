@@ -16,6 +16,9 @@ public class WorkerManager
     private WallkerVisual[] _visuals;
     private int _visualSwitcher = 0;
 
+    private int FinishedRuins;
+    public string RuinsInfo => $"{FinishedRuins}/{_ruins.Count}";
+
     public WorkerManager(List<Ruin> ruins, List<WorkerBuilding> workerBuildings, WorkerManagerStats stats, WallkerVisual[] workerVisuals)
     {
         GameObject gameObj = new(typeof(WorkerPool).Name);
@@ -46,6 +49,7 @@ public class WorkerManager
         if (r.IsMaxed)
         {
             _needReconstructionIds.Remove(id);
+            FinishedRuins++;
             // Send Finished Event
         }
         Debug.Log("TODO Add more comfort");
@@ -94,7 +98,7 @@ public class WorkerManager
 
         if (_pool.HasFreeWorkers && GameManager.Instance.Sand > 0 && _needReconstructionIds.Count > 0)
         {
-            _pool.Get(_visuals[_visualSwitcher], _ruins[_needReconstructionIds[0]], BaseStats.Speed, GameManager.Instance.TryGet(Resource.Sand, BaseStats.CarryWeight));
+            _pool.Get(_visuals[_visualSwitcher], _ruins[_needReconstructionIds[0]], BaseStats.Speed, GameManager.Instance.TryGetSand(BaseStats.CarryWeight));
             // Add to list & subscribe for event
             _visualSwitcher = (_visualSwitcher + 1) % _visuals.Length;
         }
